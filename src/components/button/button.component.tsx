@@ -18,10 +18,10 @@ type ButtonProps = {
 	loading?: boolean;
 	disabled?: boolean;
 	activityIndicatorSize?: number;
-	additionalContentWrapperStyles?: StyleProp<ViewStyle>;
-	additionalBtnStyles?: StyleProp<ViewStyle>;
-	additionalTextStyles?: StyleProp<TextStyle>;
-	additionalIconWrapperStyles?: StyleProp<ViewStyle>;
+	extraContentWrapperStyles?: StyleProp<ViewStyle>;
+	extraBtnStyles?: StyleProp<ViewStyle>;
+	extraTextStyles?: StyleProp<TextStyle>;
+	extraIconWrapperStyles?: StyleProp<ViewStyle>;
 };
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
@@ -31,10 +31,10 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 	loading = false,
 	disabled = false,
 	activityIndicatorSize = 24,
-	additionalContentWrapperStyles = {},
-	additionalBtnStyles = {},
-	additionalTextStyles = {},
-	additionalIconWrapperStyles = {},
+	extraContentWrapperStyles = {},
+	extraBtnStyles = {},
+	extraTextStyles = {},
+	extraIconWrapperStyles = {},
 }) => {
 	const isDisabled = React.useMemo(() => {
 		return loading || disabled;
@@ -47,19 +47,16 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 			style={[
 				styles.button,
 				isDisabled && styles.disabledBtn,
-				additionalBtnStyles,
+				extraBtnStyles,
 			]}
 		>
 			{loading ? (
 				<ActivityIndicator size={activityIndicatorSize} />
 			) : (
-				<View style={[styles.content, additionalContentWrapperStyles]}>
+				<View style={[styles.content, extraContentWrapperStyles]}>
 					{icon && (
 						<View
-							style={[
-								styles.iconWrapper,
-								additionalIconWrapperStyles,
-							]}
+							style={[styles.iconWrapper, extraIconWrapperStyles]}
 						>
 							{icon}
 						</View>
@@ -68,7 +65,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 						style={[
 							styles.text,
 							isDisabled && styles.disabledText,
-							additionalTextStyles,
+							extraTextStyles,
 						]}
 					>
 						{text}

@@ -5,7 +5,7 @@ import { COLORS } from 'src/themes';
 export const styles = StyleSheet.create({
 	safeArea: {
 		flex: 1,
-		backgroundColor: COLORS.antiFlashWhite,
+		backgroundColor: COLORS.water,
 	},
 	contentContainer: {
 		flex: 1,

@@ -6,6 +6,7 @@ export const useDevtools = (): void => {
 		if (__DEV__) {
 			DevSettings.addMenuItem('Debugging', () => {
 				NativeModules.DevSettings.setIsDebuggingRemotely(true);
+				NativeModules.DevSettings.showAsyncStorageContentInDev();
 			});
 		}
 		if (__DEV__) {
