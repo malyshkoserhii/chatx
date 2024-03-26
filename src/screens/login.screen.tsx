@@ -2,27 +2,31 @@ import * as React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Alert, Text } from 'react-native';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch } from 'react-redux';
 
 import { Container } from 'src/components/container';
 import { Skeleton } from 'src/components/skeleton';
 import { Button } from 'src/components/button';
 import { Input } from 'src/components/input';
-import { LoginFormValues } from 'src/types';
+import { AppDispatch, LoginFormValues } from 'src/types';
 import { loginSchema } from 'src/validation';
+import * as authOperations from 'src/redux/auth/auth-operations';
 
 let render = 0;
 
 export const LoginScreen = () => {
+	const dispatch: AppDispatch = useDispatch();
+
 	const { control, handleSubmit } = useForm<LoginFormValues>({
 		mode: 'all',
 		reValidateMode: 'onChange',
 		resolver: yupResolver(loginSchema),
 	});
 
-	const onSubmit: SubmitHandler<LoginFormValues> = (
+	const onSubmit: SubmitHandler<LoginFormValues> = async (
 		data: LoginFormValues,
 	) => {
-		Alert.alert(JSON.stringify(data));
+		dispatch(authOperations.signIn(data));
 	};
 
 	render++;
@@ -34,17 +38,17 @@ export const LoginScreen = () => {
 					name="email"
 					control={control}
 					label="Email"
-					defaultValue=""
+					defaultValue="test@test.com"
 				/>
 
 				<Input
 					name="password"
 					control={control}
 					label="Password"
-					defaultValue=""
+					defaultValue="Pass1234!"
 				/>
 
-				<Text style={{ marginBottom: 30 }}>Render:{render}</Text>
+				{/* <Text>Render:{render}</Text> */}
 
 				<Button text="Login" onPress={handleSubmit(onSubmit)} />
 			</Container>

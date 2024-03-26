@@ -73,6 +73,7 @@ export function Input<
 					isFocused && styles.focused,
 					error && styles.wrong,
 				]}
+				autoCapitalize="none"
 				ref={inputRef}
 			/>
 
