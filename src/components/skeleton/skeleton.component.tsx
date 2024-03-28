@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { SafeAreaView, StyleProp, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { styles } from './skeleton.styles';

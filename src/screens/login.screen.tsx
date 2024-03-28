@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Alert, Text } from 'react-native';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 

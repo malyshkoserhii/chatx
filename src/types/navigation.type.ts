@@ -1,13 +1,19 @@
-import { CharacterInfroParams } from './screen-params.type';
-
 export enum NAVIGATION_KEYS {
 	LOGIN = 'LOGIN',
-	HOME = 'HOME',
-	CHARACTER_INFO = 'CHARACTER_INFO',
+	CHATS_STACK = 'CHATS_STACK',
+	ADD_FRIENDS_STACK = 'ADD_FRIENDS_STACK',
+	FRIENDS_STACK = 'FRIENDS_STACK',
+	SETTINGS_STACK = 'SETTINGS_STACK',
+	CHATS = 'CHATS',
+	ADD_FRIENDS = 'ADD_FRIENDS',
+	FRIENDS = 'FRIENDS',
+	SETTINGS = 'SETTINGS',
 }
 
 export type RootStackParamList = {
 	[NAVIGATION_KEYS.LOGIN]: undefined;
-	[NAVIGATION_KEYS.HOME]: undefined;
-	[NAVIGATION_KEYS.CHARACTER_INFO]: CharacterInfroParams;
+	[NAVIGATION_KEYS.CHATS]: undefined;
+	[NAVIGATION_KEYS.ADD_FRIENDS]: undefined;
+	[NAVIGATION_KEYS.FRIENDS]: undefined;
+	[NAVIGATION_KEYS.SETTINGS]: undefined;
 };

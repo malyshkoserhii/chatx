@@ -24,8 +24,8 @@ export const AppContainer: React.FunctionComponent<AppContainerProps> = ({
 	}, [dispatch]);
 
 	if (isBeingLoggedIn) {
-		//TODO: implement Splash Screen
-		// return <Text>Splash Screen</Text>;
+		return <Text>Splash Screen</Text>;
 	}
+
 	return <View style={styles.container}>{children}</View>;
 };
