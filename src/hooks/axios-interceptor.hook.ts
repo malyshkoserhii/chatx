@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
+
 import { authAxios, authService } from 'src/services';
 import * as authActions from 'src/redux/auth/auth-actions';
-import { useDispatch } from 'react-redux';
 import { AppDispatch } from 'src/types';
 
 export const useAxiosInterceptors = (
@@ -42,5 +43,5 @@ export const useAxiosInterceptors = (
 			authAxios.interceptors.request.eject(requestIntercept);
 			authAxios.interceptors.response.eject(responseIntercept);
 		};
-	}, [accessToken, refreshToken]);
+	}, [refreshToken]);
 };

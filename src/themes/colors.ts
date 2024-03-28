@@ -14,7 +14,7 @@ export const COLORS = Object.freeze({
 	platinum: '#E8E8E4',
 	gainsboro: '#D8E2DC',
 	spanishPink: '#FEC5BB',
-	test: '#FEC89A',
+	peachOrange: '#FEC89A',
 	// brown
 	desertSand: '#E6CCB2',
 	whiteChocolate: '#EDE0D4',
