@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingVertical: 10,
 		borderRadius: 32,
-		backgroundColor: COLORS.internationalOrange,
+		backgroundColor: COLORS.cyan,
 	},
 	text: {
 		fontFamily: FONTS.Roboto.medium,
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 		color: COLORS.antiFlashWhite,
 	},
 	disabledBtn: {
-		backgroundColor: COLORS.dimGrey,
+		backgroundColor: COLORS.palePink,
 	},
 	disabledText: {
 		color: COLORS.chineseSilver,

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { SafeAreaView, StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { styles } from './skeleton.styles';
 
@@ -12,9 +13,11 @@ export const Skeleton: React.FunctionComponent<SkeletonProps> = ({
 	children,
 	extraSafeAreaStyles = {},
 }) => {
+	const insets = useSafeAreaInsets();
+
 	return (
-		<SafeAreaView style={[styles.safeArea, extraSafeAreaStyles]}>
+		<View style={[styles(insets).safeArea, extraSafeAreaStyles]}>
 			{children}
-		</SafeAreaView>
+		</View>
 	);
 };

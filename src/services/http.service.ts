@@ -5,7 +5,7 @@ import { BASE_URL } from '@env';
 export class HttpService {
 	constructor(
 		private fetchingService: HttpClient,
-		private baseUrl = BASE_URL,
+		private baseUrl = 'http://localhost:3030',
 	) {}
 
 	public createQueryLink(base: string, args: Map) {
