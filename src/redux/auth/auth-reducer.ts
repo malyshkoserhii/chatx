@@ -8,7 +8,14 @@ import {
 	signInRequest,
 	signInSuccess,
 } from './auth-actions';
-import { AuthData } from 'src/types';
+import { AuthData, AuthUser, Follower } from 'src/types';
+import {
+	addFriendSuccess,
+	cancelInviteSuccess,
+	declineInviteSuccess,
+	deleteFriendSuccess,
+	sendInviteSuccess,
+} from '../friends/friends-actions';
 
 const initialState: AuthData = {
 	user: null,
@@ -31,12 +38,89 @@ const authData = createReducer(initialState, (builder) => {
 			user: payload?.user,
 		};
 	});
+
 	builder.addCase(fetchCurrentUserSuccess, (state, { payload }) => {
 		return {
 			...state,
 			user: payload,
 		};
 	});
+
+	builder.addCase(sendInviteSuccess, (state, { payload }) => {
+		return {
+			user: {
+				...(state.user as AuthUser),
+				followings: [
+					...(state.user?.followings ?? []),
+					payload,
+				] as Array<Follower>,
+			},
+			tokens: {
+				...state.tokens,
+			},
+		};
+	});
+
+	builder.addCase(cancelInviteSuccess, (state, { payload }) => {
+		return {
+			user: {
+				...(state.user as AuthUser),
+				followings: state.user?.followings.filter(
+					(following) => following.id !== payload.id,
+				) as Array<Follower>,
+			},
+			tokens: {
+				...state.tokens,
+			},
+		};
+	});
+
+	builder.addCase(declineInviteSuccess, (state, { payload }) => {
+		return {
+			user: {
+				...(state.user as AuthUser),
+				followers: state.user?.followers.filter(
+					(folower) => folower.id !== payload.id,
+				) as Array<Follower>,
+			},
+			tokens: {
+				...state.tokens,
+			},
+		};
+	});
+
+	builder.addCase(addFriendSuccess, (state, { payload }) => {
+		return {
+			user: {
+				...(state.user as AuthUser),
+				friends: [
+					...(state.user?.friends ?? []),
+					payload,
+				] as Array<Follower>,
+				followers: state.user?.followers.filter(
+					(folower) => folower.id !== payload.id,
+				) as Array<Follower>,
+			},
+			tokens: {
+				...state.tokens,
+			},
+		};
+	});
+
+	builder.addCase(deleteFriendSuccess, (state, { payload }) => {
+		return {
+			user: {
+				...(state.user as AuthUser),
+				friends: state.user?.friends.filter(
+					(friend) => friend.id !== payload.id,
+				) as Array<Follower>,
+			},
+			tokens: {
+				...state.tokens,
+			},
+		};
+	});
+
 	builder.addCase(PURGE, () => initialState);
 });
 

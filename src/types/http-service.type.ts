@@ -167,3 +167,7 @@ export type PaginatedResponse<T> = {
 	previous: string | null;
 	results: Array<T>;
 };
+
+export type ResponseMessage = {
+	message: string;
+};

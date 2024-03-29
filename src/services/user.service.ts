@@ -1,12 +1,16 @@
-import { User } from 'src/types';
+import { AuthUser } from 'src/types';
 import { HttpFactoryService } from './http-factory.service';
 import { HttpService } from './http.service';
 
 export class UserService {
 	constructor(private httpService: HttpService) {}
 
-	public async getUser(): Promise<User> {
-		return await this.httpService.get<User>('user/me');
+	public async getUser(): Promise<AuthUser> {
+		return await this.httpService.get<AuthUser>('user/me');
+	}
+
+	public async getAll(): Promise<Array<AuthUser>> {
+		return await this.httpService.get<Array<AuthUser>>('user/all');
 	}
 
 	public async signOut(): Promise<void> {

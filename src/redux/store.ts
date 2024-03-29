@@ -13,6 +13,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { authReducer } from '../redux/auth/auth-reducer';
+import { friendsReducer } from './friends/friends-reducer';
 
 const authPersistConfig = {
 	key: 'root',
@@ -23,32 +24,33 @@ const authPersistConfig = {
 export const store = configureStore({
 	reducer: {
 		auth: persistReducer(authPersistConfig, authReducer),
+		friends: friendsReducer,
 	},
 	middleware: (getDefaultMiddleware) => {
 		return process.env.NODE_ENV === 'development'
 			? getDefaultMiddleware({
-				serializableCheck: {
-					ignoredActions: [
-						FLUSH,
-						REHYDRATE,
-						PAUSE,
-						PERSIST,
-						PURGE,
-						REGISTER,
-					],
-				},
+					serializableCheck: {
+						ignoredActions: [
+							FLUSH,
+							REHYDRATE,
+							PAUSE,
+							PERSIST,
+							PURGE,
+							REGISTER,
+						],
+					},
 			  }).concat(logger)
 			: getDefaultMiddleware({
-				serializableCheck: {
-					ignoredActions: [
-						FLUSH,
-						REHYDRATE,
-						PAUSE,
-						PERSIST,
-						PURGE,
-						REGISTER,
-					],
-				},
+					serializableCheck: {
+						ignoredActions: [
+							FLUSH,
+							REHYDRATE,
+							PAUSE,
+							PERSIST,
+							PURGE,
+							REGISTER,
+						],
+					},
 			  });
 	},
 	devTools: process.env.NODE_ENV === 'development',

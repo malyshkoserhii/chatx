@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { SignInData, User } from 'src/types';
+import { AuthUser, SignInData } from 'src/types';
 
 export const signInRequest = createAction('auth/signInRequest');
 export const signInSuccess = createAction<SignInData>('auth/signInSuccess');
@@ -10,7 +10,7 @@ export const signOut = createAction('auth/signOut');
 export const fetchCurrentUserRequest = createAction(
 	'auth/fetchCurrentUserRequest',
 );
-export const fetchCurrentUserSuccess = createAction<User>(
+export const fetchCurrentUserSuccess = createAction<AuthUser>(
 	'auth/fetchCurrentUserSuccess',
 );
 export const fetchCurrentUserError = createAction('auth/fetchCurrentUserError');
