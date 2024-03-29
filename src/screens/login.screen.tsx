@@ -37,7 +37,7 @@ export const LoginScreen = () => {
 					name="email"
 					control={control}
 					label="Email"
-					defaultValue="test@test.com"
+					defaultValue="legolas@tolkien.com"
 				/>
 
 				<Input

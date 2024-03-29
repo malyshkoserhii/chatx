@@ -1,3 +1,5 @@
+import { ChatParams } from './screen-params.type';
+
 export enum NAVIGATION_KEYS {
 	LOGIN = 'LOGIN',
 	CHATS_STACK = 'CHATS_STACK',
@@ -5,6 +7,7 @@ export enum NAVIGATION_KEYS {
 	FRIENDS_STACK = 'FRIENDS_STACK',
 	SETTINGS_STACK = 'SETTINGS_STACK',
 	CHATS = 'CHATS',
+	CHAT = 'CHAT',
 	ADD_FRIENDS = 'ADD_FRIENDS',
 	FRIENDS = 'FRIENDS',
 	SETTINGS = 'SETTINGS',
@@ -16,4 +19,5 @@ export type RootStackParamList = {
 	[NAVIGATION_KEYS.ADD_FRIENDS]: undefined;
 	[NAVIGATION_KEYS.FRIENDS]: undefined;
 	[NAVIGATION_KEYS.SETTINGS]: undefined;
+	[NAVIGATION_KEYS.CHAT]: ChatParams;
 };

@@ -1,7 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { SCREEN_OPTIONS } from 'src/constants';
 import {
 	AddFriendsScreen,
+	ChatScreen,
 	ChatsScreen,
 	FriendsScreen,
 	LoginScreen,
@@ -27,6 +29,11 @@ export const ChatsStack = () => {
 			<Stack.Screen
 				name={NAVIGATION_KEYS.CHATS}
 				component={ChatsScreen}
+				options={SCREEN_OPTIONS}
+			/>
+			<Stack.Screen
+				name={NAVIGATION_KEYS.CHAT}
+				component={ChatScreen}
 				options={SCREEN_OPTIONS}
 			/>
 		</Stack.Navigator>

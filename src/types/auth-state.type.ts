@@ -1,6 +1,6 @@
-import { Tokens, User } from './user.type';
+import { AuthUser, Tokens } from './user.type';
 
 export type AuthData = {
-	user: User | null;
+	user: AuthUser | null;
 	tokens: Tokens;
 };

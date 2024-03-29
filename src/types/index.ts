@@ -6,3 +6,4 @@ export * from './auth.type';
 export * from './user.type';
 export * from './auth-state.type';
 export * from './common-state.type';
+export * from './friend.type';

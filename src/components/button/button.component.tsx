@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { styles } from './button.styles';
+import { COLORS } from 'src/themes';
 
 type ButtonProps = {
 	onPress: () => void;
@@ -51,7 +52,10 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 			]}
 		>
 			{loading ? (
-				<ActivityIndicator size={activityIndicatorSize} />
+				<ActivityIndicator
+					size={activityIndicatorSize}
+					color={COLORS.platinum}
+				/>
 			) : (
 				<View style={[styles.content, extraContentWrapperStyles]}>
 					{icon && (

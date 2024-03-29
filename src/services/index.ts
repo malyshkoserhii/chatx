@@ -4,3 +4,4 @@ export * from './async-storage.service';
 export * from './film.service';
 export * from './auth.service';
 export * from './auth-axios.service';
+export * from './friends.service';
