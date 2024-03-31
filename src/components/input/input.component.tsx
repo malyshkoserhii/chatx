@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Text, TextInput, View } from 'react-native';
+import {
+	StyleProp,
+	Text,
+	TextInput,
+	TextStyle,
+	View,
+	ViewStyle,
+} from 'react-native';
 import {
 	Control,
 	FieldPath,
@@ -26,12 +33,22 @@ type InputProps<
 		  >
 		| undefined;
 	label?: string;
+	extraInputContainerStyles?: StyleProp<ViewStyle>;
+	extraErrorStyles?: StyleProp<TextStyle>;
 };
 
 export function Input<
 	T extends FieldValues,
 	N extends FieldPath<T> = FieldPath<T>,
->({ control, name, rules, defaultValue, label }: InputProps<T, N>) {
+>({
+	control,
+	name,
+	rules,
+	defaultValue,
+	label,
+	extraInputContainerStyles,
+	extraErrorStyles = {},
+}: InputProps<T, N>) {
 	const [isFocused, setIsFocused] = React.useState(false);
 
 	const inputRef = React.createRef<TextInput>();
@@ -60,8 +77,8 @@ export function Input<
 	};
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.label}>{label}</Text>
+		<View style={[styles.container, extraInputContainerStyles]}>
+			{label && <Text style={styles.label}>{label}</Text>}
 			<TextInput
 				value={value}
 				onChangeText={onChange}
@@ -77,7 +94,11 @@ export function Input<
 				ref={inputRef}
 			/>
 
-			<Error<T> control={control} field={name} />
+			<Error<T>
+				control={control}
+				field={name}
+				extraErrorStyles={extraErrorStyles}
+			/>
 		</View>
 	);
 }

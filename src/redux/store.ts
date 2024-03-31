@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { authReducer } from '../redux/auth/auth-reducer';
 import { friendsReducer } from './friends/friends-reducer';
+import { chatReducer } from './chat/chat-reducer';
 
 const authPersistConfig = {
 	key: 'root',
@@ -25,6 +26,7 @@ export const store = configureStore({
 	reducer: {
 		auth: persistReducer(authPersistConfig, authReducer),
 		friends: friendsReducer,
+		chat: chatReducer,
 	},
 	middleware: (getDefaultMiddleware) => {
 		return process.env.NODE_ENV === 'development'
